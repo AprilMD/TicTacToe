@@ -1,0 +1,5 @@
+.bundle/
+.rspec
+vendor
+Gemfile.lock
+rspec_instructions.md
