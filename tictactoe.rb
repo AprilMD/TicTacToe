@@ -6,9 +6,9 @@ class TicTacToe
         @board = [["-","-","-"],["-","-","-"],["-","-","-"]]
     end
 
-    def player_1_turn(x_axis,y_axis)
+    def player_1_turn(row,column)
         @new_board = @board
-        @new_board[(x_axis-1)][(y_axis-1)] = "X"
+        @new_board[(row-1)][(column-1)] = "X"
         print @new_board
     end
 
