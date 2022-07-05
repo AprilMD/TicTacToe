@@ -17,11 +17,10 @@ class TicTacToe
         @row = gets.chomp.to_i
         puts "column?"
         @column = gets.chomp.to_i
+        check_input_validity(@row, @column)
         @coordinate_message = "these are your coords: #{@row}, #{@column}"
         puts @coordinate_message
         player_turn(@row, @column)
-        # player_turn(coords_given)
-        # convert from string to integers
     end
 
     def player_turn(row,column)
@@ -37,7 +36,14 @@ class TicTacToe
             print 'cell already occupied. choose another.'
             ask_player_input
         end
-        
+    end
+              
+    def check_input_validity(row, column)
+        if (row > 3) || (column > 3)
+            false
+        else
+            true
+        end
     end
 
 end

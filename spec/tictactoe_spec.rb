@@ -10,19 +10,19 @@ describe 'tictactoe game'
         end
     end
 
-    # describe 'gets player input' do
-    #     it 'returns coordinates taken from' do
-    #         game = TicTacToe.new
-    #         $stdin = StringIO.new("2,2") # just automates putting user input into the terminal
-    #         expect(game.ask_player_position).to eq("2,2")
-    #     end
-    # end
-
     describe 'ask player for input' do
         it 'prints relevant coordinate message' do
             game = TicTacToe.new
             game.ask_player_input
             expect(game.coordinate_message).to eq("these are your coords: #{game.row}, #{game.column}")
+        end
+        it 'returns true if input is valid' do
+            game = TicTacToe.new
+            expect(game.check_input_validity(1, 2)).to be(true)
+        end
+        it 'returns false if it is invalid' do
+            game = TicTacToe.new
+            expect(game.check_input_validity(6, 2)).to be(false)
         end
     end
 
