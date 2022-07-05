@@ -3,16 +3,24 @@ require 'stringio'
 class TicTacToe
     attr_accessor :board
     attr_accessor :turn_count
+    attr_accessor :row
+    attr_accessor :column
+    attr_accessor :coordinate_message
 
     def initialize()
         @board = [["-","-","-"],["-","-","-"],["-","-","-"]]
         @turn_count = 0
     end
 
-    def ask_player_position
-        puts "give us your coordinates in this format: row,column"
-        @coords_given =  $stdin.gets.chomp
-        #player_1_turn(coords_given)
+    def ask_player_input
+        puts "row?"
+        @row = gets.chomp.to_i
+        puts "column?"
+        @column = gets.chomp.to_i
+        @coordinate_message = "these are your coords: #{@row}, #{@column}"
+        puts @coordinate_message
+        player_turn(@row, @column)
+        # player_turn(coords_given)
         # convert from string to integers
     end
 
@@ -27,8 +35,12 @@ class TicTacToe
             print @board
         else 
             print 'cell already occupied. choose another.'
+            ask_player_input
         end
         
     end
 
 end
+
+# game = TicTacToe.new
+# game.ask_player_input

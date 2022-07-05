@@ -10,11 +10,19 @@ describe 'tictactoe game'
         end
     end
 
-    describe 'gets player input' do
-        it 'returns coordinates taken from' do
+    # describe 'gets player input' do
+    #     it 'returns coordinates taken from' do
+    #         game = TicTacToe.new
+    #         $stdin = StringIO.new("2,2") # just automates putting user input into the terminal
+    #         expect(game.ask_player_position).to eq("2,2")
+    #     end
+    # end
+
+    describe 'ask player for input' do
+        it 'prints relevant coordinate message' do
             game = TicTacToe.new
-            $stdin = StringIO.new("2,2") # just automates putting user input into the terminal
-            expect(game.ask_player_position).to eq("2,2")
+            game.ask_player_input
+            expect(game.coordinate_message).to eq("these are your coords: #{game.row}, #{game.column}")
         end
     end
 
@@ -50,8 +58,6 @@ describe 'tictactoe game'
             game.player_turn(3,3)
             expect(game.board[2][2]).to eq('0')
         end
-
-
     end
 
 
