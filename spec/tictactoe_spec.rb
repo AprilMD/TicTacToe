@@ -10,32 +10,48 @@ describe 'tictactoe game'
         end
     end
 
-    describe 'gets player 1 input' do
-        it 'returns coordinates taken from player 1' do
+    describe 'gets player input' do
+        it 'returns coordinates taken from' do
             game = TicTacToe.new
             $stdin = StringIO.new("2,2") # just automates putting user input into the terminal
             expect(game.ask_player_position).to eq("2,2")
         end
     end
 
-    describe 'player 1 turn' do
-        it 'turns the cell in the first row and first column to an X when given [1,1]' do
+    describe 'player turn' do
+        it 'turns the cell in the first row and first column to an X when given [1,1] when turn count is 0' do
             game = TicTacToe.new
-            game.player_1_turn(1,1)
+            game.player_turn(1,1)
             expect(game.board[0][0]).to eq('X')
         end
 
-        it 'turns the cell in the first row and second column to an X when given [1,2]' do
+        it 'turns the cell in the first row and second column to an X when given [1,2] when turn count is 0' do
             game = TicTacToe.new
-            game.player_1_turn(1,2)
+            game.player_turn(1,2)
             expect(game.board[0][1]).to eq('X')
         end
 
-        it 'turns the cell in third row and third column to an X when given [3,3]' do
+        it 'turns the cell in third row and third column to an X when given [3,3] when turn count is 0' do
             game = TicTacToe.new
-            game.player_1_turn(3,3)
+            game.player_turn(3,3)
             expect(game.board[2][2]).to eq('X')
         end
+
+        it 'turns the cell in the first row and second column to an X when given [1,2] when turn count is even' do
+            game = TicTacToe.new
+            game.turn_count += 2
+            game.player_turn(1,2)
+            expect(game.board[0][1]).to eq('X')
+        end
+
+        it 'turns the cell in third row and third column to an X when given [3,3] and with an odd turncount' do
+            game = TicTacToe.new
+            game.turn_count += 1
+            game.player_turn(3,3)
+            expect(game.board[2][2]).to eq('0')
+        end
+
+
     end
 
 
@@ -48,10 +64,5 @@ describe 'tictactoe game'
     #         expect {game.player_1_turn(3,3)}.to output("cell already occupied. choose another.").to_stdout
     #     end
     # end
-
-    
-
-
-
 
 
