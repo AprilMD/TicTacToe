@@ -17,10 +17,24 @@ class TicTacToe
         @row = gets.chomp.to_i
         puts "column?"
         @column = gets.chomp.to_i
-        check_input_validity(@row, @column)
-        @coordinate_message = "these are your coords: #{@row}, #{@column}"
-        puts @coordinate_message
-        player_turn(@row, @column)
+        
+        if check_input_validity(@row, @column) == false
+            puts 'input is invalid. Please try again'
+            ask_player_input
+        else 
+            @coordinate_message = "these are your coords: #{@row}, #{@column}"
+            puts @coordinate_message
+            player_turn(@row, @column)
+        end
+    end
+
+    def check_cell_is_available(row, column)
+        if @board[(row-1)][(column-1)] == "-"
+            true
+        else
+            print 'cell already occupied. choose another.'
+            false
+        end
     end
 
     def player_turn(row,column)
@@ -33,7 +47,6 @@ class TicTacToe
             @turn_count += 1
             print @board
         else 
-            print 'cell already occupied. choose another.'
             ask_player_input
         end
     end

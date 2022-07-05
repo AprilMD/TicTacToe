@@ -26,6 +26,25 @@ describe 'tictactoe game'
         end
     end
 
+    describe 'check if cell is occupied' do
+        it 'tells you if a cell is occupied' do
+            game = TicTacToe.new
+            game.player_turn(3,3)
+            expect {game.check_cell_is_available(3,3)}.to output("cell already occupied. choose another.").to_stdout
+        end
+
+        it 'returns false to check cell is available if cell is occupied' do
+            game = TicTacToe.new
+            game.player_turn(3,3)
+            expect(game.check_cell_is_available(3,3)).to eq(false)
+        end
+
+        it 'returns true to check cell is available if cell is available' do
+            game = TicTacToe.new
+            expect(game.check_cell_is_available(3,3)).to eq(true)
+        end
+    end
+
     describe 'player turn' do
         it 'turns the cell in the first row and first column to an X when given [1,1] when turn count is 0' do
             game = TicTacToe.new
@@ -61,14 +80,5 @@ describe 'tictactoe game'
     end
 
 
-    
-
-    # describe 'check if cell is occupied' do
-    #     it 'should not allow a player to use an occupied cell' do
-    #         game = TicTacToe.new
-    #         game.player_1_turn(3,3)
-    #         expect {game.player_1_turn(3,3)}.to output("cell already occupied. choose another.").to_stdout
-    #     end
-    # end
 
 
