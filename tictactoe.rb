@@ -38,11 +38,11 @@ class TicTacToe
     end
 
     def player_turn(row,column)
-        if @board[(row-1)][(column-1)] == "-" && @turn_count % 2 == 0
+        if check_cell_is_available(row,column) && @turn_count % 2 == 0
             @board[(row-1)][(column-1)] = "X"
             @turn_count += 1
             print @board
-        elsif @board[(row-1)][(column-1)] == "-" && @turn_count % 2 != 0
+        elsif check_cell_is_available(row,column) && @turn_count % 2 != 0
             @board[(row-1)][(column-1)] = "0"
             @turn_count += 1
             print @board
