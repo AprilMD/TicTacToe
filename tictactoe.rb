@@ -12,6 +12,11 @@ class TicTacToe
         @turn_count = 0
     end
 
+    def start_game
+        puts "welcome to our game. *******"
+        ask_player_input
+    end
+
     def ask_player_input
         puts "row?"
         @row = gets.chomp.to_i

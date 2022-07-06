@@ -9,6 +9,13 @@ describe 'tictactoe game'
             expect(game.board).to eq([['-','-','-'],['-','-','-'],['-','-','-']])
         end
     end
+    
+    describe 'welcome to our tictactoe game' do
+        it 'provides welcome message to players' do
+            game = TicTacToe.new
+            expect {game.start_game}.to output("welcome to our game. *******").to_stdout
+        end
+    end
 
     describe 'ask player for input' do
         it 'prints relevant coordinate message' do
@@ -78,7 +85,5 @@ describe 'tictactoe game'
             expect(game.board[2][2]).to eq('0')
         end
     end
-
-
 
 
